@@ -82,7 +82,7 @@ function addNewInput() {
     stockPrice = document.getElementById("stockPrice").value;
     let interestRate = document.getElementById("interestRate").value/100;
     let volatility = document.getElementById("volatility").value/100;
-    let timeToExpiration = document.getElementById("timeToExpiration").value;
+    let timeToExpiration = document.getElementById("timeToExpiration").value/100;
     
     let optionsPrice = calculateOptionPrice(isCall, isLong, 
         strikePrice, stockPrice,
