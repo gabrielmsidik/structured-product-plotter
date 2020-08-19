@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"> 
+    <head>
+        <meta charset="UTF-8">
+        <title>Structured Product Plotter</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.1.0/math.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Structured Product Pay-Off Plotter</h1>
+        <div>For single-asset, single-period structured products</div>
+        
+        <div id="stockProperties">
+            <span>Current Stock Price</span>
+            <input type="number" id="stockPrice" value=100><br>
+            <span>Interest Rate (% p.a.)</span>
+            <input type="number" id="interestRate" value=5><br>
+            <span>Volatility (% p.a.)</span>
+            <input type="number" id="volatility" value=10><br>
+            <span>Time To Expiration (% of year)</span>
+            <input type="number" id="timeToExpiration" value=1>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <canvas id="myChart" width="250px" height="250px"></canvas>
+        <div>
+            <span id="optionParameters">Option Type</span>
+            <input type="radio" id="call" name="option-type" value="call" checked>
+            <label for="call">Call</label>
+            <input type="radio" id="call" name="option-type" value="put">
+            <label for="call">Put</label><br>
+            <span>Position</span>
+            <input type="radio" id="long" name="option-position" value="isLong" checked>
+            <label for="isLong">Long</label>
+            <input type="radio" id="long" name="option-position" value="isShort">
+            <label for="isShort">Short</label><br>
+            <span>Strike Price</span>
+            <input type="number" id="strike-price" value=100><br>
+            <button class="button button1">Enter</button>
+            <button class="button button2">Aggregate</button>
+        </div>
+        <table id="currentOptions" style="width:100%">
+            <tr>
+                <th>Option Type</th>
+                <th>Position</th>
+                <th>Strike Price</th>
+                <th>OptionPrice</th>
+                <th>Quantity</th>
+            </tr>
+        </table>
+        <script src="index.js"></script>
+        
+    </body>
+</html>

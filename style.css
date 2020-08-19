@@ -1,0 +1,55 @@
+body {
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: lighter;
+    margin: auto;
+}
+
+#myChart {
+    max-width: 500px;
+    max-height: 500px;
+    margin: auto;
+}
+
+#stockProperties {
+    margin-top: 2%;
+    font-size: smaller;
+}
+
+#optionParameters {
+    width: 10%;
+    margin: 10px auto;
+}
+
+input {
+    text-align: center;
+    width: 10;
+}
+
+button {
+    background-color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: navy;
+    border: 2px solid black;
+    transition-duration: 0.4s;
+    margin: 10px auto;
+}
+
+#currentOptions {
+    max-width: 500px;
+    max-height: 500px;
+    font-family: arial, sans-serif;
+    width: 50%;
+    text-align: center;
+    font-size: smaller;
+    margin: 10px auto;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    padding: 3px;
+}
+  
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
