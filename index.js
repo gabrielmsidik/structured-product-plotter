@@ -2,6 +2,26 @@ let ctx = document.getElementById('myChart').getContext('2d');
 let datasetList = [];
 let stockPrice = 100;
 
+let DEFAULT_OPTIONS = {
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: false
+            },
+            scaleLabel: {
+                display: true,
+                labelString: "Resultant Pay-off"
+            }
+        }],
+        xAxes: [{
+            scaleLabel: {
+                display: true,
+                labelString: "Stock Price @Expiry"
+            }
+        }]
+    }
+}
+
 Chart.pluginService.register({
     beforeInit: function(chart) {
         var data = chart.config.data;
@@ -21,23 +41,15 @@ let dataHolder = {
     datasets: datasetList
 };
 
-var myChart = new Chart(ctx, {
+let myChart = new Chart(ctx, {
     type: 'line',
     data: dataHolder,
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: false
-                }
-            }]
-        }
-    }
+    options: DEFAULT_OPTIONS
 });
 
 function obtain_labels(stockPrice) {
     labels = [];
-    for (var i = 0; i < 15; i++) {
+    for (let i = 0; i < 15; i++) {
         labels.push(stockPrice - 70 + i * 10);
     }
     return labels;
@@ -45,16 +57,43 @@ function obtain_labels(stockPrice) {
 
 const button = document.querySelector('button');
 button.addEventListener('click', addNewInput);
-var strikePriceInputElement = document.getElementById("strike-price");
+let strikePriceInputElement = document.getElementById("strike-price");
 
 const aggregateButton = document.querySelectorAll('button')[1];
 aggregateButton.addEventListener('click', aggregateInputs);
+
+const clearButton = document.querySelectorAll('button')[2];
+clearButton.addEventListener('click', clearData);
 
 strikePriceInputElement.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
         button.click();
     }
 });
+
+
+function clearData () {
+
+    dataHolder = {
+        labels: obtain_labels(stockPrice),
+        datasets: []
+    };
+    
+    let myChart = new Chart(ctx, {
+        type: 'line',
+        data: dataHolder,
+        options: DEFAULT_OPTIONS
+    });
+    
+    let optionsTable = document.getElementById('currentOptions');
+    optionsTable.innerHTML = `<tr>
+        <th>Option Type</th>
+        <th>Position</th>
+        <th>Strike Price</th>
+        <th>OptionPrice</th>
+        <th>Quantity</th>
+    </tr>`;
+}
 
 function generateFunction(isCall, isLong, strikePrice, optionsPrice) {
     
@@ -70,7 +109,7 @@ function generateFunction(isCall, isLong, strikePrice, optionsPrice) {
 }
 
 function randomRGBA() {
-    var o = Math.round, r = Math.random, s = 255;
+    let o = Math.round, r = Math.random, s = 255;
     return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
 }
 
@@ -120,15 +159,7 @@ function addNewInput() {
     myChart = new Chart(ctx, {
         type: 'line',
         data: dataHolder,
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: false
-                    }
-                }]
-            }
-        }
+        options: DEFAULT_OPTIONS
     });
 }
 
@@ -154,11 +185,10 @@ function calculateOptionPrice(isCall, isLong,
         price = strikePrice * Math.exp(-1 * interestRate * timeToExpiration) * cdfNormal(-1 * d2) - stockPrice * cdfNormal(-1 * d1);
     }
 
-    price = Math.round(price * 100)/100;
+    price = Math.round(price * 1000)/1000;
 
     return isLong ? price: -price;
 }
-
 
 function aggregateInputs() {
 
@@ -195,14 +225,14 @@ function aggregateInputs() {
     myChart = new Chart(ctx, {
         type: 'line',
         data: aggregatedDataHolder,
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: false
-                    }
-                }]
-            }
-        }
+        options: DEFAULT_OPTIONS
     });
+}
+
+function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+        currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
 }
