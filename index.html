@@ -11,28 +11,26 @@
         <h1 class="container">Options Combination Pay-Off Plotter</h1>
         <div id="subheader" class="container-fluid">For combinations of single-asset, single-expiry date European options</div>
         <div class="container px-3">
-            <div id="stockDetailsWrapper">
-                <form>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="stockPrice">Current Stock Price</label>
-                            <input type="number" size="" id="stockPrice" value=100>
-                        </div>
-                        <div class="form-group">
-                            <label for="interestRate">Interest Rate (% p.a.)</label>
-                            <input type="number" id="interestRate" value=5>
-                        </div>
-                        <div class="form-group">
-                            <label for="volatility">Volatility (% p.a.)</label>
-                            <input type="number" id="volatility" value=10>
-                        </div>
-                        <div class="form-group">
-                            <label for="timeToExpiration">Time To Expiration (years)</label>
-                            <input type="number" id="timeToExpiration" value=1>
-                        </div>
+            <form id="stockDetailsWrapper">
+                <div class="row">
+                    <div class="col">
+                        <label for="stockPrice">Current Stock Price</label>
+                        <input type="number" class="form-control" id="stockPrice" value=100>
                     </div>
-                </form>
-            </div>
+                    <div class="col">
+                        <label for="interestRate">Interest Rate (% p.a.)</label>
+                        <input type="number" class="form-control" id="interestRate" value=5>
+                    </div>
+                    <div class="col">
+                        <label for="volatility">Volatility (% p.a.)</label>
+                        <input type="number" class="form-control" id="volatility" value=10>
+                    </div>
+                    <div class="col">
+                        <label for="timeToExpiration">Time To Expiration (yrs)</label>
+                        <input type="number" class="form-control" id="timeToExpiration" value=1>
+                    </div>
+                </div>
+            </form>
             <div id="outerWrapper" class="row">
                 <div class="col-md-8">
                     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -43,26 +41,26 @@
                     </div>
                     <div id="optionProperties" class="row">
                         <div class="col">
-                            Option Type
+                            Option Type</br>
                             <input type="radio" id="call" name="option-type" value="call" checked><label for="call">Call</label>
                             <input type="radio" id="call" name="option-type" value="put"><label for="call">Put</label>
                         </div>
                         <div class="col">
-                            Position
+                            Position</br>
                             <input type="radio" id="long" name="option-position" value="isLong" checked>
                             <label for="isLong">Long</label>
                             <input type="radio" id="long" name="option-position" value="isShort">
                             <label for="isShort">Short</label>
                         </div>
                         <div class="col">
-                            Strike Price
+                            Strike Price</br>
                             <input type="number" id="strike-price" value=100>
                         </div>
                     </div>
-                    <div class="row" id="buttons">
-                        <button class="button button1">Enter</button>
-                        <button class="button button2">Aggregate</button>
-                        <button class="button button2">Clear</button>
+                    <div class="row d-flex justify-content-center" id="buttons">
+                        <button class="button">Enter</button>
+                        <button class="button">Aggregate</button>
+                        <button class="button">Clear</button>
                     </div>
                 </div>
                 <div class="col-md-4">

@@ -37,6 +37,10 @@ canvas {
     margin: 0 auto
 }
 
+button {
+    font-size: smaller;
+}
+
 tr {
     text-align: center
 }
