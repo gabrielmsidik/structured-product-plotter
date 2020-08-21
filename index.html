@@ -8,48 +8,80 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>Options Combination Pay-Off Plotter</h1>
-        <div>For combinations of single-asset, single-expiry date European options</div>
-        
-        <div id="stockProperties">
-            <span>Current Stock Price</span>
-            <input type="number" id="stockPrice" value=100><br>
-            <span>Interest Rate (% p.a.)</span>
-            <input type="number" id="interestRate" value=5><br>
-            <span>Volatility (% p.a.)</span>
-            <input type="number" id="volatility" value=10><br>
-            <span>Time To Expiration (Num. of years (ratio))</span>
-            <input type="number" id="timeToExpiration" value=1>
+        <h1 class="container">Options Combination Pay-Off Plotter</h1>
+        <div id="subheader" class="container-fluid">For combinations of single-asset, single-expiry date European options</div>
+        <div class="container px-3">
+            <div id="stockDetailsWrapper">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="stockPrice">Current Stock Price</label>
+                            <input type="number" size="" id="stockPrice" value=100>
+                        </div>
+                        <div class="form-group">
+                            <label for="interestRate">Interest Rate (% p.a.)</label>
+                            <input type="number" id="interestRate" value=5>
+                        </div>
+                        <div class="form-group">
+                            <label for="volatility">Volatility (% p.a.)</label>
+                            <input type="number" id="volatility" value=10>
+                        </div>
+                        <div class="form-group">
+                            <label for="timeToExpiration">Time To Expiration (years)</label>
+                            <input type="number" id="timeToExpiration" value=1>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="outerWrapper" class="row">
+                <div class="col-md-8">
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                    <div class="row">
+                        <div class="col"></div>
+                        <canvas id="myChart" class="col" ></canvas>
+                        <div class="col"></div>
+                    </div>
+                    <div id="optionProperties" class="row">
+                        <div class="col">
+                            Option Type
+                            <input type="radio" id="call" name="option-type" value="call" checked><label for="call">Call</label>
+                            <input type="radio" id="call" name="option-type" value="put"><label for="call">Put</label>
+                        </div>
+                        <div class="col">
+                            Position
+                            <input type="radio" id="long" name="option-position" value="isLong" checked>
+                            <label for="isLong">Long</label>
+                            <input type="radio" id="long" name="option-position" value="isShort">
+                            <label for="isShort">Short</label>
+                        </div>
+                        <div class="col">
+                            Strike Price
+                            <input type="number" id="strike-price" value=100>
+                        </div>
+                    </div>
+                    <div class="row" id="buttons">
+                        <button class="button button1">Enter</button>
+                        <button class="button button2">Aggregate</button>
+                        <button class="button button2">Clear</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div id="panelHeader">Current Options</div>
+                    <table id="currentOptions">
+                        <tr>
+                            <th>Type</th>
+                            <th>Position</th>
+                            <th>Strike Price</th>
+                            <th>Cost</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
         
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <canvas id="myChart" width="250px" height="250px"></canvas>
-        <div>
-            <span id="optionParameters">Option Type</span>
-            <input type="radio" id="call" name="option-type" value="call" checked>
-            <label for="call">Call</label>
-            <input type="radio" id="call" name="option-type" value="put">
-            <label for="call">Put</label><br>
-            <span>Position</span>
-            <input type="radio" id="long" name="option-position" value="isLong" checked>
-            <label for="isLong">Long</label>
-            <input type="radio" id="long" name="option-position" value="isShort">
-            <label for="isShort">Short</label><br>
-            <span>Strike Price</span>
-            <input type="number" id="strike-price" value=100><br>
-            <button class="button button1">Enter</button>
-            <button class="button button2">Aggregate</button>
-            <button class="button button2">Clear</button>
-        </div>
-        <table id="currentOptions" style="width:100%">
-            <tr>
-                <th>Option Type</th>
-                <th>Position</th>
-                <th>Strike Price</th>
-                <th>OptionPrice</th>
-                <th>Quantity</th>
-            </tr>
-        </table>
+        
+        
         <script src="index.js"></script>
         
     </body>

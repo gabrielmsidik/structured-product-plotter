@@ -2,6 +2,8 @@ let ctx = document.getElementById('myChart').getContext('2d');
 let datasetList = [];
 let stockPrice = 100;
 
+ctx.canvas.height = ctx.canvas.width;
+
 let DEFAULT_OPTIONS = {
     scales: {
         yAxes: [{
