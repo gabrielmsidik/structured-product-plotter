@@ -57,8 +57,8 @@ function obtain_labels(stockPrice) {
     return labels;
 }
 
-const button = document.querySelector('button');
-button.addEventListener('click', addNewInput);
+const enterButton = document.querySelectorAll('button')[0];
+enterButton.addEventListener('click', addNewInput);
 let strikePriceInputElement = document.getElementById("strike-price");
 
 const aggregateButton = document.querySelectorAll('button')[1];
@@ -69,24 +69,21 @@ clearButton.addEventListener('click', clearData);
 
 strikePriceInputElement.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
-        button.click();
+        enterButton.click();
     }
 });
 
 
 function clearData () {
-
     dataHolder = {
         labels: obtain_labels(stockPrice),
         datasets: []
     };
-    
     let myChart = new Chart(ctx, {
         type: 'line',
         data: dataHolder,
         options: DEFAULT_OPTIONS
     });
-    
     let optionsTable = document.getElementById('currentOptions');
     optionsTable.innerHTML = `<tr>
         <th>Option Type</th>

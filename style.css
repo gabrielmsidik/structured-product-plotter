@@ -1,31 +1,45 @@
 h1 {
     margin: 0 auto;
-    text-align: center;
-}
-
-input {
-    text-align: center;
-    width: 25%
-}
-
-#subheader {
-    text-align: center;
+    font-size: x-large;
     margin-bottom: 1%;
 }
 
-canvas {
-    max-width: 50px;
+h5 {
+    font-size: large;
+}
+
+h6 {
+    font-size: smaller;
+    font-style: italic;
+    font-weight: lighter;
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+.btn {
+    background-color: cornsilk;
+    font-size: smaller;
+    color: black;
+    border-color: black;
+}
+
+body {
+    text-align: center;
+}
+
+.form-control {
+    text-align: center;
 }
 
 #stockDetailsWrapper {
     text-align: center;
-    font-size: smaller;
+    font-size: x-small;
+    margin: 0 auto;
 }
 
-#optionProperties {
+#optionDetailsWrapper {
     text-align: center;
-    font-size: small;
-    font-weight: lighter;
+    font-size: x-small;
     margin: 0 auto;
 }
 
@@ -37,15 +51,11 @@ canvas {
     margin: 0 auto
 }
 
-button {
-    font-size: smaller;
-}
-
 tr {
     text-align: center
 }
 
-#panelHeader {
+.optionTableHeader {
     text-align: center;
     font-weight: bold;
     margin-bottom: 5px;
